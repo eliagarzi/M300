@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>M300</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+	</buildSpec>
+	<natures>
+	</natures>
+	<variableList>
+		<variable>
+			<name>ONEDRIVE</name>
+			<value>file:/D:/Daten/OneDrive/OneDrive%20-%20TBZ</value>
+		</variable>
+	</variableList>
+</projectDescription>
