@@ -134,25 +134,25 @@ Um nun aus einem Image einen laufenden Container zu erstellen, nutzt man den Doc
 docker run -p hostport:containerport -d imagename
 
 * `-p`
-        * Mit -p kann bestimmt werden, welche Ports am Container geöffnet werden. Hiermit wird auch gleichzeitig ein Portforwarding konfiguriert. Mit -p 8080:80 zeigt der Port 8080 auf dem Port auf den Port 80 im Container.
+        Mit -p kann bestimmt werden, welche Ports am Container geöffnet werden. Hiermit wird auch gleichzeitig ein Portforwarding konfiguriert. Mit -p 8080:80 zeigt der Port 8080 auf dem Port auf den Port 80 im Container.
 
 * `-v`
-        * Wird für das Anbinden von Volumes gebraucht. Die Syntax lautet docker run -v VOLUMENAME:PFAD_IM_Container.
+        Wird für das Anbinden von Volumes gebraucht. Die Syntax lautet docker run -v VOLUMENAME:PFAD_IM_Container.
 
 * `-d`
-        * d steht für detached. Der Container läuft somit im Hintergrund.
+        d steht für detached. Der Container läuft somit im Hintergrund.
 
 * `--restart`
-        * Hiermit kann die Policy angegeben werden, nach welcher der Container neustartet z.B. bei einem Hostabsturz. Mit --restart always wird der Container immer mit dem Host gestartet.
+        Hiermit kann die Policy angegeben werden, nach welcher der Container neustartet z.B. bei einem Hostabsturz. Mit --restart always wird der Container immer mit dem Host gestartet.
 
 * `--rm`
-        * Der Container wird automatisch wieder gelöscht, sobald er beendet wird.
+        Der Container wird automatisch wieder gelöscht, sobald er beendet wird.
 
 * `--name`
-        * Namen für den Container angeben
+        Namen für den Container angeben
 
 * `--hostname`
-        * Hostnamen für den Container bestimmen
+        Hostnamen für den Container bestimmen
 
 ### Docker Volumes
 
