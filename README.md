@@ -7,8 +7,7 @@
     - [Docker Architektur](#docker-architektur)
     - [Docker Workflow](#docker-workflow)
     - [1. Dockerfile](#1-dockerfile)
-    - [Docker Build](#docker-build)
-    - [Beispiel Dockerfile](#beispiel-dockerfile)
+      - [Docker Build](#docker-build)
     - [2. Dockerimage](#2-dockerimage)
     - [3. Dockercontainer](#3-dockercontainer)
     - [Docker Volumes](#docker-volumes)
@@ -93,7 +92,7 @@ Im folgenden der Aufbau eines Dockerfile:
 4. COPY: Kopiert den start Ordner in das Verzeichnis /usr/share/nginx/html/start
 5. COPY: Kopiert meine nginx.conf in das /etc/nginx/ Verzeichnis
 
-### Docker Build
+#### Docker Build
 
 Damit aus einem Dockerfile ein Dockerimage wird, muss man dieses "bauen".
 
@@ -104,8 +103,6 @@ Um ein Image zu bauen, nutzt man den Docker build Befehl:
         docker build -t testcontainer . 
 
 Mit -t gibt man einen Namen für das Image an. Der . am Ende gibt den Pfad an, in welchem das Dockerfile liegt, aus welchem ein Image gebaut werden soll. Der . steht für den aktuellen relativen Pfad.
-
-### Beispiel Dockerfile
 
 ### 2. Dockerimage
 
