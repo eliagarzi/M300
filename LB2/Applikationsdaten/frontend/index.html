@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+    <head lang="de" dir="ltr">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Arduino Dashboard</title>
+        <meta name="description" content="Arduino Dashboard">
+        <meta name="tags" content="Arduino Dashboard">
+        
+        <link rel="stylesheet" href="./source/styles/index.css" type="text/css">
+
+        <script src="https://cdn.socket.io/4.5.0/socket.io.min.js" integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k" crossorigin="anonymous"></script>
+    </head>
+    <body>
+    <div class="grid-container">
+        <header class="header">
+            <h1 class="heading-1">Arduino Dashboard</h1>
+            <div class="status-info" style="display: none;">
+                <p class="status-info__message"></p>
+                <div class="status-info__animation-section"></div>
+            </div>
+    
+            <div class="status-info-finished" style="display: none;">
+                <p></p>
+            </div>
+            <button class="header__button button-general button-white" id="button-logout">Logout</button>
+        </header>
+
+        <section class="arduino-overview-table">
+            <table>
+                <thead>
+                    <tr class="arduino-overview-table__header arduino-overview-table-row-top">
+                        <th><button class="arduino-overview-table__name-button button-general button-table-head" type="button">Name</button></th>
+                        <th><button class="arduino-overview-table__name-button button-general button-table-head" type="button">Location</button></th>
+                        <th><button class="arduino-overview-table__name-button button-general button-table-head" type="button">Last seen</button></th>
+                        <th><button class="arduino-overview-table__name-button button-general button-table-head" type="button">Temp</button></th>
+                        <th><button class="arduino-overview-table__name-button button-general button-table-head" type="button">Humidity</button></th>
+                        <th><button class="arduino-overview-table__name-button button-general button-table-head" type="button">Pressure</button></th>
+                        <th><button class="arduino-overview-table__name-button button-general button-table-head" type="button">Hue</button></th>
+                        <th><button class="arduino-overview-table__name-button button-general button-purple" id="button-create" type="button">Create</button></th>
+                    </tr>
+                </thead>
+                <tbody class="arduino-overview-table__body" style="display: none;">
+                </tbody>
+            </table>
+            <div class="arduino-init-info" style="display: none;">
+                <div class="arduino-init-info--container">
+                    <span class="arduino-init-info--container__text"></span>
+                </div>
+            </div>
+        </section>
+
+            <div class="widget-info widget-info-temperature widget-gauge">
+                <div class="widget-info__gauge">
+                    <svg class="gauge-svg gauge-svg--temperature" viewBox="0 0 101 101">
+                        <foreignObject class="gauge__back" x="0" y="0" width="101" height="101">
+                            <div class="gauge__gradient gauge__gradient--temperature" xmlns="http://www.w3.org/1999/xhtml"></div>
+                        </foreignObject>
+            
+                        <g class="gauge__blend">
+                            <circle cx="50.5" cy="50.5" r="50.5"/>
+                            <path d="M 50 96 a 46 46 0 0 1 0 -92 46 46 0 0 1 0 92" />
+                        </g>
+                    </svg>
+                    <div class="widget-info__gauge--inner-circle">
+                            <p class="widget-info__value--temperature">0</p>
+                    </div>
+                </div>
+                <p class="widget-info__trend widget-info_trend--gauge widget-info__value--temperature--trend">-0</p>
+                <p class="widget-info__description  widget-info__description--gauge">Temperature</p>
+            </div>
+    
+            <div class="widget-info widget-info-activecount">
+                <p class="widget-info__value">
+                    <span class="widget-info__value--focus widget-info__value--green widget-info__value--active">0</span>
+                    <span class="widget-info__value--focus">/</span>
+                    <span class="widget-info__value--focus widget-info__value--not-active">0</span>
+                </p>
+                <p class="widget-info__description">Active Count</p>
+            </div>
+    
+            <div class="widget-info widget-humidity widget-gauge">
+                <div class="widget-info__gauge">
+                    <svg class="gauge-svg gauge-svg--humidity" viewBox="0 0 101 101">
+                        <foreignObject class="gauge__back" x="0" y="0" width="101" height="101">
+                            <div class="gauge__gradient gauge__gradient--humidity" xmlns="http://www.w3.org/1999/xhtml"></div>
+                        </foreignObject>
+            
+                        <g class="gauge__blend">
+                            <circle cx="50.5" cy="50.5" r="50.5"/>
+                            <path d="M 50 96 a 46 46 0 0 1 0 -92 46 46 0 0 1 0 92" />
+                        </g>
+                    </svg>
+                    <div class="widget-info__gauge--inner-circle">
+                            <p class="widget-info__value--humidity">0</p>
+                    </div>
+                </div>
+                <p class="widget-info__trend widget-info_trend--gauge widget-info__value--humidity--trend">0</p>
+                <p class="widget-info__description widget-info__description--gauge ">Humidity</p>
+            </div>
+    
+            <div class="widget-info widget-pressure">
+                <p class="widget-info__value"> 
+                    <span class="widget-info__value--focus widget-info__value--green widget-info__value--pressure">0</span>
+                    <span class="widget-info__unit">hPa</span>
+                </p>
+
+                <p class="widget-info__description">Pressure</p>
+            </div>
+            
+            <div class="widget-info widget-brightness">
+                <p class="widget-info__value">
+                    <span class="widget-info__value--focus widget-info__value--yellow widget-info__value--hue">0</span>
+                    <span class="widget-info__unit">lumen</span>
+                </p>
+                <p class="widget-info__description">Hue</p>
+            </div>
+
+        </div>
+
+        <div class="arduino-create-menu menu-general" id="arduino-create-menu" style="display: none;">
+            <form class="menu-general-form" id="arduino-create-menu__form" style="display: flex;">
+                <input class="input-general" name="new-arduino-name" type="text" placeholder="Device Name*">
+                <input class="input-general" name="new-arduino-location" type="text" placeholder="Location*">
+                <div class="menu-general-button-container">
+                    <button class="button-general button-white arduino-create-menu-button-cancel-two" type="button">Cancel</button>
+                    <button class="button-general button-green" id="arduino-create-menu-button-create" type="submit">Create</button>   
+                </div>
+            </form>
+            <div class="menu-general-form arduino-create-menu__info" style="display: none;">
+                <h3>Arduino Erfolgreich erstellt</h3>
+                <p>UUID:</p>
+                <button class="button-general button-uuid-info" id="arduino-create-menu__info-uuid" onclick="copyClipboard('arduino-create-menu__info-uuid')"></button>
+                <p>API Key:</p>
+                <button class="button-general button-uuid-info" id="arduino-create-menu__info-apikey" onclick="copyClipboard('arduino-create-menu__info-apikey')"></button>
+                
+                <button type="button" class="button-general button-purple" id="arduino-create-menu__info-apikey">Download Config</button>
+                <button type="button" class="button-general button-white arduino-create-menu-button-cancel" id="arduino-create-menu__info-close">Close</button>
+            </div>
+        </div>
+
+        <div class="arduino-options-menu menu-general" id="arduino-options-menu" style="display: none;">
+            <div class="menu-general-form">
+                <button class="button-general button-uuid-info" id="arduino-create-menu__info-uuid-info" onclick="copyClipboard('arduino-create-menu__info-uuid-info')">COPY UUID</button>
+                <button class="button-general button-white" id="arduino-options-menu-button-change" type="button">Change</button>
+                <button class="button-general button-red" id="arduino-options-menu-button-delete" type="button">Delete</button>
+                <button class="button-general button-white" id="arduino-options-menu-button-cancel" type="button">Cancel</button>
+            </div>
+        </div>
+
+        <div class="arduino-delete-menu menu-general" id="arduino-delete-menu" style="display: none;">
+            <form class="menu-general-form" id="arduino-delete-menu__form">
+                <input class="input-general" name="delete-arduino-name" type="text" required placeholder="Type name to delete*">
+                <div class="menu-general-button-container">
+                    <button class="button-general button-white" id="arduino-delete-menu-button-cancel" type="button">Cancel</button>
+                    <button class="button-general button-red--grayed" id="arduino-delete-menu-button-delete">Delete</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="arduino-change-properties-menu menu-general" id="arduino-change-properties-menu" style="display: none;">
+            <form class="menu-general-form" id="arduino-change-properties-menu__form">
+                <input class="input-general" name="change-arduino-name" type="text" required placeholder="Device Name">
+                <input class="input-general" name="change-arduino-location" type="text" required placeholder="Location">
+                <div class="menu-general-button-container">
+                    <button class="button-general button-white" id="arduino-change-properties-menu-button-cancel"type="button">Cancel</button>
+                    <button class="button-general button-green" id="arduino-change-properties-menu-button-change" type="submit">Change</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="background-hide" style="display: none;"></div>
+    
+        <script src="./source/script/ui.js" async defer></script>
+    </body>
+</html>

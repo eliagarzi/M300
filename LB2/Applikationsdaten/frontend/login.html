@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Arduino Dashboard - Login</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./source/styles/login.css" type="text/css">
+    </head>
+    <body>
+
+        <header>
+            <h1>Arduino Dashboard</h1>
+        </header>
+
+        <div class="status-info" style="display: none;">
+            <p class="status-info__message">Info</p>
+            <div class="status-info__animation-section"></div>
+        </div>
+
+        <div class="login-menu menu-general" id="login-menu" style="display: block;">
+            <form class="menu-general-form" id="login-menu__form">
+                <input class="input-general" name="login-email" type="text" placeholder="E-Mail">
+                <input class="input-general" name="login-password" type="password" placeholder="Password">
+                <div class="menu-general-button-container">
+                    <button class="button-general button-reset" id="login-menu-button-reset-password" type="button">Passwort vergessen</button>
+                    <button class="button-general button-green" id="login-menu-button-login" type="submit">Login</button>   
+                </div>
+            </form>
+        </div>
+
+        <div class="login-reset-menu menu-general" id="login-reset-menu" style="display: none;">
+            <form class="menu-general-form" id="login-reset-menu__form">
+                <input class="input-general" name="login-reset-email" type="text" placeholder="E-Mail">
+                <div class="menu-general-button-container">
+                    <button class="button-general button-white" id="login-reset-menu-button-cancel" type="button">Cancel</button>
+                    <button class="button-general button-green" id="login-reset-menu-button-login" type="submit">Login</button>   
+                </div>
+            </form>
+        </div>
+
+        <div class="login-success-menu menu-general" id="login-success-menu" style="display: none;">
+            <p>Wenn der Benutzer exisitert, haben Sie eine E-Mail erhalten. Folgen Sie dem Link in der E-Mail</p>
+        </div>
+        
+        <script src="./source/script/login.js" async defer></script>
+    </body>
+</html>

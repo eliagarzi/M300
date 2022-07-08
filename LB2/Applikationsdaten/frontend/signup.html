@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Arduino Dashboard - Konto Erstellen</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./source/styles/login.css" type="text/css">
+    </head>
+    <body>
+
+        <header>
+            <h1>Arduino Dashboard</h1>
+        </header>
+
+        <div class="status-info" style="display: none;">
+            <p class="status-info__message">Info</p>
+            <div class="status-info__animation-section"></div>
+        </div>
+
+        <div class="signup-menu menu-general" id="signup-menu">
+            <form class="menu-general-form" id="signup-menu__form">
+                <input class="input-general" name="signup-email" type="text" placeholder="E-Mail">
+                <input class="input-general" name="signup-password" type="password" placeholder="Password">
+                <input class="input-general" name="signup-password" type="password" placeholder="Password wiederholen">
+                <div class="menu-general-button-container">
+                    <button class="button-general button-green button-create-login" id="signup-menu-button-create" type="submit">Konto erstellen</button>   
+                </div>
+            </form>
+        </div>
+        
+        <script src="./source/script/signup.js" async defer></script>
+    </body>
+</html>
