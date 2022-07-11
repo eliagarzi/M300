@@ -1,0 +1,64 @@
+apiVersion: apps/v1   
+kind: Deployment
+metadata:
+  name: arduino-node-deployment
+  labels:
+    app: arduino-node
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: arduino-node
+  template:
+    metadata:
+      labels:
+        app: arduino-node
+    spec:
+      containers:
+      - name: arduino-node-container
+        image: garseb/m300node
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 3000
+        - containerPort: 3001
+        env:
+          - name: CORS_SOURCE_PORT
+            value: "5501"
+          - name: CORS_SOURCE_DOMAIN
+            value: "localhost"
+          - name: CORS_SOURCE_PROTOCOL
+            value: "http"
+          - name: "REDIS_IP"
+            value: arduino-redis-service
+          - name: REDIS_PORT
+            value: "6379"
+          - name: SOCKETIO_SERVER_PORT
+            value: "3000"
+          - name: API_PORT
+            value: "3001"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: arduino-node-service-tcp-3001
+spec:
+  type: LoadBalancer
+  selector:
+    app: arduino-node
+  ports:
+    - protocol: TCP
+      port: 3001
+      targetPort: 3001
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: arduino-node-service-tcp-3000
+spec:
+  type: LoadBalancer
+  selector:
+    app: arduino-node
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
