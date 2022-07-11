@@ -32,7 +32,7 @@
 ## Docker
 Als erstes haben wir die Arbeit in drei Bereiche aufgeteilt. In Frontend, Backend und Datenbank. 
 Wir haben als erstes die Docker-images erstllt. Um dies zu tun war der erste command: (Frontend)
-    <code>docker pull nginx<code>
+    <code>docker pull nginx<code/>
 Nun konnten wir das nginx als basis für unser Frontend nutzen.  
 <code>FROM nginx
     COPY frontend /usr/share/nginx/html
