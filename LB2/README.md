@@ -30,7 +30,16 @@
 - Eine Applikation als Containeranwendung bereitstellen
 
 ## Docker
-
+Als erstes haben wir die Arbeit in drei Bereiche aufgeteilt. In Frontend, Backend und Datenbank. 
+Wir haben als erstes die Docker-images erstllt. Um dies zu tun war der erste command: (Frontend)
+    docker pull nginx
+Nun konnten wir das nginx als basis für unser Frontend nutzen.  
+    FROM nginx
+    COPY frontend /usr/share/nginx/html
+    RUN rm /etc/nginx/nginx.conf
+    RUN rm -r /etc/nginx/conf.d/
+    COPY nginx.conf /etc/nginx/
+    EXPOSE 80
 ---
 
 
