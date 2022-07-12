@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: arduino-node-container
-        image: garseb/m300node
+        image: garseb.azurecr.io/garseb/m300node:latest
         imagePullPolicy: Never
         ports:
         - containerPort: 3000
