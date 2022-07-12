@@ -1,5 +1,13 @@
 version: "3.8"
 services:
+  nginx-container:
+    container_name: nginx-container
+    image: garseb/m300nginx
+    hostname: nginx-container
+    restart: always
+    ports:
+      - 80:80
+
   redis-container:
     container_name: redis-server
     image: redis
@@ -24,4 +32,4 @@ services:
       REDIS_PORT: 6379
       CORS_SOURCE_PROTOCOL: http
       CORS_SOURCE_DOMAIN: 127.0.0.1
-      CORS_SOURCE_PORT: 5501
+      CORS_SOURCE_PORT: 80
