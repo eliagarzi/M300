@@ -1,4 +1,3 @@
-# Als Baseimage wird 
 FROM node:16 
 
 WORKDIR /app/
