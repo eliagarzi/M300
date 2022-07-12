@@ -40,7 +40,7 @@ Für die LB2 haben wir eine Applikation die aus drei Bestandteilen besteht mit H
       - [Hochladen der Images auf Azure](#hochladen-der-images-auf-azure)
     - [Kubernetes Cluster vorbereiten](#kubernetes-cluster-vorbereiten)
     - [Workload auf Kubernetes Deployen](#workload-auf-kubernetes-deployen)
-  - [## Abschluss](#-abschluss)
+  - [Abschluss](#abschluss)
 
 ## Informieren
 
@@ -55,8 +55,6 @@ Installiert wird die Arduino API, welche im Modul "Mikroprozessoranwendungen" vo
 - Den Service aus dem Internet auf Azure erreichbar machen
 
 ## Azure
-
----
 
 ### Wie kann ich Azure nutzen?
 
@@ -80,8 +78,6 @@ Der Azure Kubernetes Service ist Platform as a Service. Er bietet einem die Mög
 Die Azure Container Registry ermöglicht das Speichern von Containerimages in der Cloud. Dies wird dafür gebraucht, dass wird die Images, welche wir lokale erstellen und bauen in der Cloud speichern können und dass das Kubernetes Cluster auf dieses aus dem Internet zugängliche Repository auch abrufen kann.
 
 ## Kubernetes 
-
----
 
 Für dieses Modul wollen wir mit Kubernetes arbeiten. Im Folgenden eine kleine Zusammenfassung zu Kubernetes.
 
@@ -197,8 +193,6 @@ Kubectl ist ein Interface, welches genutzt werden kann, um mit Kubernetes zu kom
 
 ## Terraform
 
----
-
 Terraform ist ein Infrastructure as Code Tool. Es kann dazu genutzt werden, um Ressourcen deklarativ aufzusetzen. Das heisst, man bestimmt, wie die Lösung aussehen soll und nicht, wie man zu der Lösung kommt. Mit einem HCL (Terraform) Script definiere ich nur die Ressourcen, die ich brauche. Es geht also um das WAS. Mit einem PowerShell Script könnte ich manuell ressourcen erstellen, man spricht von imperativ. Es geht also darum, WIE eine Ressource erstellt werden soll.
 
 Im folgenden wird Terraform Grundlegend besprochen. Die Dokumentation zum Azure Terraform Provider findet man auf der offiziellen Terraform Seite.
@@ -312,7 +306,6 @@ Mit apply wird die Konfiguration die im .tf File angegeben ist ausgeführt und e
 
 ## Umsetzung
 
----
 
 ### Vorbereitung der Applikation
 
@@ -594,7 +587,7 @@ Kubernetes nutzt den Kubecontrol Manager, um die Konfigurationsdateien, die auf 
 ![](2022-07-12-08-33-08.png)
 
 ## Abschluss
----
+
 
 **Sebastian**
 
